@@ -1,6 +1,6 @@
 {
-    "name": "krlove/eloquent-model-generator",
-    "description": "Eloquent Model Generator",
+    "name": "magentron/eloquent-model-generator",
+    "description": "Eloquent Model Generator (forked from krlove/eloquent-model-generator",
     "version": "2.0.2",
     "license": "MIT",
     "autoload": {
@@ -13,6 +13,9 @@
             "Krlove\\Tests\\Integration\\": "tests/integration"
         }
     },
+    "replace": {
+		"krlove/eloquent-model-generator": "<=2.0.2"
+	},
     "require": {
         "php": "^8.0",
         "illuminate/database": "^9.0 || ^10.0",
@@ -25,6 +28,10 @@
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     },
+	"config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+	},
     "extra": {
         "laravel": {
             "providers": [
