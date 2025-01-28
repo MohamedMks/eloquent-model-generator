@@ -2,6 +2,7 @@
 
 namespace Krlove\EloquentModelGenerator\Command;
 
+use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Krlove\EloquentModelGenerator\Config\Config;
 use Krlove\EloquentModelGenerator\Exception\GeneratorException;
@@ -66,5 +67,10 @@ trait GenerateCommandTrait
             ['connection', 'cn', InputOption::VALUE_OPTIONAL, 'Connection property', config('eloquent_model_generator.connection')],
             ['no-backup', 'b', InputOption::VALUE_OPTIONAL, 'Backup existing model', config('eloquent_model_generator.no_backup', false)],
         ];
+    }
+
+    protected function resolve($abstract)
+    {
+        return Container::getInstance()->make($abstract);
     }
 }

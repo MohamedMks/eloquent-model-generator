@@ -16,17 +16,15 @@ class GenerateModelsCommand extends Command
 
     protected $name = 'krlove:generate:models';
 
-    public function __construct(private Generator $generator, private DatabaseManager $databaseManager)
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
-        $config = $this->createConfig();
-        Prefix::setPrefix($this->databaseManager->connection($config->getConnection())->getTablePrefix());
+        $generator       = $this->resolve(Generator::class);
+        $databaseManager = $this->resolve(DatabaseManager::class);
 
-        $schemaManager = $this->databaseManager->connection($config->getConnection())->getDoctrineSchemaManager();
+        $config = $this->createConfig();
+        Prefix::setPrefix($databaseManager->connection($config->getConnection())->getTablePrefix());
+
+        $schemaManager = $databaseManager->connection($config->getConnection())->getDoctrineSchemaManager();
         $tables = $schemaManager->listTables();
         $skipTables = $this->option('skip-table');
         foreach ($tables as $table) {
@@ -36,7 +34,7 @@ class GenerateModelsCommand extends Command
             }
 
             $config->setClassName(EmgHelper::getClassNameByTableName($tableName));
-            $model = $this->generator->generateModel($config);
+            $model = $generator->generateModel($config);
             $this->saveModel($model);
 
             $this->output->writeln(sprintf('Model %s generated', $model->getName()->getName()));
