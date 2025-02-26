@@ -28,11 +28,11 @@ class RelationProcessor implements ProcessorInterface
         $schemaGrammar = $connection->getSchemaGrammar();
 
         $prefixedTableName = Prefix::add($model->getTableName());
-        $tables            = $schemaBuilder->getTableListing();
+        $tables            = $schemaBuilder->getTableListing(null, false);
 
         foreach ($tables as $table) {
             $tableName      = $table;
-            $blueprint      = new Blueprint($tableName);
+            $blueprint      = new Blueprint($connection, $tableName);
             $blueprintState = new BlueprintState($blueprint, $connection, $schemaGrammar);
             $columns        = $blueprintState->getColumns();
             $indexes        = $schemaBuilder->getIndexes($tableName);

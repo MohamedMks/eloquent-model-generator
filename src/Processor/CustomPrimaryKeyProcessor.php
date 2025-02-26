@@ -26,7 +26,7 @@ class CustomPrimaryKeyProcessor implements ProcessorInterface
         $schemaGrammar = $connection->getSchemaGrammar();
 
         $tableName      = Prefix::add($model->getTableName());
-        $blueprint      = new Blueprint($tableName);
+        $blueprint      = new Blueprint($connection, $tableName);
         $blueprintState = new BlueprintState($blueprint, $connection, $schemaGrammar);
 
         $primaryKey = $blueprintState->getPrimaryKey();

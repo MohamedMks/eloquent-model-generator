@@ -26,7 +26,7 @@ class GenerateModelsCommand extends Command
         $connection    = $databaseManager->connection($config->getConnection());
         $schemaBuilder = $connection->getSchemaBuilder();
 
-        $tables     = $schemaBuilder->getTableListing();
+        $tables     = $schemaBuilder->getTableListing(null, false);
         $skipTables = $this->option('skip-table');
 
         foreach ($tables as $table) {
