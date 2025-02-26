@@ -3,7 +3,6 @@
 namespace Krlove\EloquentModelGenerator\Command;
 
 use Illuminate\Console\Command;
-use Illuminate\Container\Container;
 use Illuminate\Database\DatabaseManager;
 use Krlove\EloquentModelGenerator\Generator;
 use Krlove\EloquentModelGenerator\Helper\Prefix;

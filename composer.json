@@ -17,10 +17,10 @@
 	},
     "require": {
         "php": "^8.0",
-        "illuminate/database": "^9.0 || ^10.0 || ^11.0",
-        "illuminate/support": "^9.0 || ^10.0 || ^11.0",
-        "illuminate/config": "^9.0 || ^10.0 || ^11.0",
-        "illuminate/console": "^9.0 || ^10.0 || ^11.0",
+        "illuminate/database": "^11.0",
+        "illuminate/support": "^11.0",
+        "illuminate/config": "^11.0",
+        "illuminate/console": "^11.0",
         "doctrine/dbal": "^3.0",
         "krlove/code-generator": "^1.0"
     },
@@ -28,7 +28,7 @@
         "friendsofphp/php-cs-fixer": "^3.70",
         "larastan/larastan": "^3.1",
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^9.5 || ^10 || ^11",
+        "phpunit/phpunit": "^11",
         "symfony/var-dumper": "^7.2",
         "vimeo/psalm": "~6.4.0"
     },

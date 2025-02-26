@@ -15,10 +15,11 @@ class GenerateCommandEventListener
 
     public function handle(CommandStarting $event): void
     {
-        if (!in_array($event->command, self::SUPPORTED_COMMANDS)) {
+        if (! in_array($event->command, self::SUPPORTED_COMMANDS)) {
             return;
         }
 
+        /** @var TypeRegistry $typeRegistry */
         $typeRegistry = Container::getInstance()->make(TypeRegistry::class);
 
         $userTypes = config('eloquent_model_generator.db_types', []);

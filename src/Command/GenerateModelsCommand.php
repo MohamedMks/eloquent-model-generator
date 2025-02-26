@@ -2,7 +2,6 @@
 
 namespace Krlove\EloquentModelGenerator\Command;
 
-use Illuminate\Config\Repository as AppConfig;
 use Illuminate\Console\Command;
 use Illuminate\Database\DatabaseManager;
 use Krlove\EloquentModelGenerator\Generator;
@@ -24,9 +23,12 @@ class GenerateModelsCommand extends Command
         $config = $this->createConfig();
         Prefix::setPrefix($databaseManager->connection($config->getConnection())->getTablePrefix());
 
-        $schemaManager = $databaseManager->connection($config->getConnection())->getDoctrineSchemaManager();
-        $tables = $schemaManager->listTables();
+        $connection    = $databaseManager->connection($config->getConnection());
+        $schemaBuilder = $connection->getSchemaBuilder();
+
+        $tables     = $schemaBuilder->getTableListing();
         $skipTables = $this->option('skip-table');
+
         foreach ($tables as $table) {
             $tableName = Prefix::remove($table->getName());
             if (in_array($tableName, $skipTables)) {
