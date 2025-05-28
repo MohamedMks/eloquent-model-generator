@@ -12,7 +12,7 @@ Upgraded [this pull](https://github.com/krlove/eloquent-model-generator/pull/125
 ## Installation
 Step 1. Add Eloquent Model Generator to your project:
 ```
-composer require --dev mohamedmks/eloquent-model-generator:^1.0.2
+composer require --dev mohamedmks/eloquent-model-generator:^1.1.0
 ```
 Step 2. Register `GeneratorServiceProvider`:
 ```php
